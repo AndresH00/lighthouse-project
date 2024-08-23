@@ -1,3 +1,36 @@
+# IMPORTANT Make sure that your apigateway account setup have a role for logs if not follow this on project root directory
+To verify if you have the cloudwatchRoleArn
+- aws apigateway get-account
+Example you have it
+{
+    "cloudwatchRoleArn": "arn:aws:iam::<your-account-id>:role/ApiGatewayCloudWatchLogsRole",
+    "throttleSettings": {
+        "burstLimit": 5000,
+        "rateLimit": 10000.0
+    },
+    "features": [
+        "UsagePlans"
+    ],
+    "apiKeyVersion": "4"
+}
+You dont have it
+{
+    "throttleSettings": {
+        "burstLimit": 5000,
+        "rateLimit": 10000.0
+    },
+    "features": [
+        "UsagePlans"
+    ],
+    "apiKeyVersion": "4"
+}
+
+# If you dont have it make sure to run this commands to set up a general log role
+- aws iam create-role --role-name ApiGatewayCloudWatchLogsRole --assume-role-policy-document file://TrustPolicyForApiGateway.json
+- aws iam attach-role-policy --role-name ApiGatewayCloudWatchLogsRole --policy-arn arn:aws:iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs
+- aws apigateway update-account --patch-operations op=replace,path=/cloudwatchRoleArn,value=arn:aws:iam::<your-account-id>:role/ApiGatewayCloudWatchLogsRole
+
+
 
 # Welcome to your CDK Python project!
 

@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "bcbaf29c-2235-40eb-9f61-a0559b519db2",
+		"name": "Lighthouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24636652"
+	},
+	"item": [
+		{
+			"name": "lighthouse_lambda1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"any\":\"json\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://<your-api-output>.execute-api.us-east-1.amazonaws.com/dev/lambda1",
+					"protocol": "https",
+					"host": [
+						"<your-api-output>",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"lambda1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
